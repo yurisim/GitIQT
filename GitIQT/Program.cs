@@ -15,7 +15,7 @@
                 "3. Create a new branch called 'feature/feature-name' from the dev branch",
                 "4. Make some changes to the code",
                 "5. Commit the changes to the feature branch",
-                "6. Push the feature branch to the remote repository /r/n",
+                "6. Push the feature branch to the remote repository",
                 "======================================================================================================================",
                 "",
                 "======================",
