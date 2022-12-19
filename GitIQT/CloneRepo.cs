@@ -11,8 +11,6 @@ namespace GitIQT
         // Ask user to clone a repository
          public void Prompt()
         {
-            Console.ForegroundColor = ConsoleColor.White;
-
             // Ask user to clone a repository
             // Get the first 5 characters of a GUID
             var repoID = Guid.NewGuid().ToString().Substring(0, 5);
@@ -20,7 +18,10 @@ namespace GitIQT
             // Ask user to checkout the dev branch of the repository
             var repoUrl = $"https://github.com/552ODST/{repoID}/ProjectBacon.git";
 
-            Console.WriteLine($"What git command do you need to type in to clone the repository located at '{repoUrl}'? Don't forget you can copy and paste!");
+            var prompt = $"What git command do you need to type in to clone the repository located at '{repoUrl}'? You can copy and paste!";
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(prompt);
 
             var success = false;
             while (!success)
@@ -57,8 +58,9 @@ namespace GitIQT
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("That's correct! You've successfully cloned the repository.");
-            
-            //CheckoutDev();
+
+            Console.WriteLine("Check what branch you are on.");
+            //new CheckoutDev().Prompt();
         }
     }
 }
