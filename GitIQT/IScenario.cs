@@ -9,6 +9,8 @@ namespace GitIQT
     public interface IScenario
     {
         void Prompt();
-        void Check(params string[] args);
+        bool Check(params string[] args);
+
+        void Next();
     }
 }

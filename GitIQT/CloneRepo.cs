@@ -21,11 +21,26 @@ namespace GitIQT
             var repoUrl = $"https://github.com/552ODST/{repoID}/ProjectBacon.git";
 
             Console.WriteLine($"What git command do you need to type in to clone the repository located at '{repoUrl}'? Don't forget you can copy and paste!");
-            Check(repoUrl);
+
+            var success = false;
+            while (!success)
+            {
+                if (Check(repoUrl))
+                {
+                    success = true;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("That's not correct. Try again.");
+                }
+            }
+
+            Next();
         }
 
         // Check if Prompt() was successful
-        public void Check(params string[] parameters)
+        public bool Check(params string[] parameters)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
 
@@ -35,18 +50,15 @@ namespace GitIQT
             // Check if the user input is correct
             var correctInput = $"git clone {parameters.First()}";
 
-            if (userInput == correctInput)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("That's correct! You've successfully cloned the repository.");
-                // CheckoutDevBranch();
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("That's not correct. Try again.");
-                Check(parameters);
-            }
+            return userInput == correctInput;
+        }
+
+        public void Next()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("That's correct! You've successfully cloned the repository.");
+            
+            //CheckoutDev();
         }
     }
 }
