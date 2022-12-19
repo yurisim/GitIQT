@@ -10,7 +10,6 @@ namespace GitIQT
     {
         void Prompt();
         bool Check(params string[] args);
-
         void Next();
     }
 }

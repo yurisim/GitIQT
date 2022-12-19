@@ -29,8 +29,7 @@
             foreach (var prompt in prompts) Console.WriteLine(prompt);
 
 
-            var cloneRepo = new CloneRepo();
-            cloneRepo.Prompt();
+            new CloneRepo().Prompt();
         }
     }
 }
