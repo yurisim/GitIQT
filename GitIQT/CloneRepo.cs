@@ -8,58 +8,59 @@ namespace GitIQT
 {
     internal class CloneRepo : IScenario
     {
+        private string Response = string.Empty;
+
+        private string Answer = string.Empty;
+
         // Ask user to clone a repository
-         public void Prompt()
+        public void AskPrompt()
         {
             // Ask user to clone a repository
             // Get the first 5 characters of a GUID
             var repoID = Guid.NewGuid().ToString().Substring(0, 5);
 
             // Ask user to checkout the dev branch of the repository
-            var repoUrl = $"https://github.com/552ODST/{repoID}/ProjectBacon.git";
+            var repoURL = $"https://github.com/552ODST/{repoID}/ProjectBacon.git";
+            Answer = $"git clone {repoURL}";
 
-            var prompt = $"What git command do you need to type in to clone the repository located at '{repoUrl}'? You can copy and paste!";
+            var prompt = $"What git command do you need to type in to clone the repository located at '{repoURL}'? You can copy and paste!";
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(prompt);
 
-            var success = false;
-            while (!success)
-            {
-                if (Check(repoUrl))
-                {
-                    success = true;
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("That's not correct. Try again.");
-                }
-            }
-
-            Next();
+            GetResponses();
         }
 
-        // Check if Prompt() was successful
-        public bool Check(params string[] parameters)
+        public void GetResponses()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
 
-            // Get the User's input
-            var userInput = Console.ReadLine();
+            Response = Console.ReadLine()?.Trim() ?? "";
 
-            // Check if the user input is correct
-            var correctInput = $"git clone {parameters.First()}";
-
-            return userInput == correctInput;
+            if (CheckReponse())
+            {
+                NextPrompt();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("That's not correct. Try again.");
+                GetResponses();
+            }
         }
 
-        public void Next()
+        // Check if Prompt() was successful
+        public bool CheckReponse()
+        {
+            return Response == Answer;
+        }
+
+        public void NextPrompt()
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("That's correct! You've successfully cloned the repository.");
 
-            Console.WriteLine("Check what branch you are on.");
+            Console.WriteLine("Next check what branch you are on and then swap to the dev branch.");
             //new CheckoutDev().Prompt();
         }
     }

@@ -30,7 +30,7 @@
             foreach (var prompt in prompts) Console.WriteLine(prompt);
 
 
-            new CloneRepo().Prompt();
+            new CloneRepo().AskPrompt();
         }
     }
 }

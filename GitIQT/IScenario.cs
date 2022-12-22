@@ -8,8 +8,10 @@ namespace GitIQT
 {
     public interface IScenario
     {
-        void Prompt();
-        bool Check(params string[] args);
-        void Next();
+        // Methods
+        void AskPrompt();
+        void GetResponses();
+        bool CheckReponse();
+        void NextPrompt();
     }
 }
