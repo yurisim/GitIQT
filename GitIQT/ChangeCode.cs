@@ -6,24 +6,19 @@ using System.Threading.Tasks;
 
 namespace GitIQT
 {
-    internal class CloneRepo : IScenario
+    internal class ChangeCode : IScenario
     {
         private string Response = string.Empty;
 
         private string Answer = string.Empty;
 
-        // Ask user to clone a repository
+        // Ask user to check the status of their branch
         public void AskPrompt()
         {
-            // Ask user to clone a repository
-            // Get the first 5 characters of a GUID
-            var repoID = Guid.NewGuid().ToString().Substring(0, 5);
+            // Ask user to check the status of their branch
+            Answer = $"git status";
 
-            // Ask user to checkout the dev branch of the repository
-            var repoURL = $"https://github.com/552ODST/{repoID}/ProjectBacon.git";
-            Answer = $"git clone {repoURL}";
-
-            var prompt = $"What git command do you need to type in to clone the repository located at '{repoURL}'? You can copy and paste!";
+            var prompt = $"You've made some changes to your code. What git command do you need to see the changes you have made in your current branch?";
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(prompt);
@@ -58,10 +53,10 @@ namespace GitIQT
         public void NextPrompt()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("That's correct! You've successfully cloned the repository.");
+            Console.WriteLine("That's correct! You've successfully checked changes made in your branches code.");
 
-            Console.WriteLine("Next check what branch you are on and then swap to the dev branch.");
-            new CheckBranch().AskPrompt();
+            Console.WriteLine("Next commit these changes to your branch.");
+            new CommitChange().AskPrompt();
         }
     }
 }

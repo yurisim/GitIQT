@@ -6,24 +6,19 @@ using System.Threading.Tasks;
 
 namespace GitIQT
 {
-    internal class CloneRepo : IScenario
+    internal class PushBranch : IScenario
     {
         private string Response = string.Empty;
 
         private string Answer = string.Empty;
 
-        // Ask user to clone a repository
+        // Ask user to push changes to remote
         public void AskPrompt()
         {
-            // Ask user to clone a repository
-            // Get the first 5 characters of a GUID
-            var repoID = Guid.NewGuid().ToString().Substring(0, 5);
+            // Ask user to push changes to remote
+            Answer = $"git push";
 
-            // Ask user to checkout the dev branch of the repository
-            var repoURL = $"https://github.com/552ODST/{repoID}/ProjectBacon.git";
-            Answer = $"git clone {repoURL}";
-
-            var prompt = $"What git command do you need to type in to clone the repository located at '{repoURL}'? You can copy and paste!";
+            var prompt = $"What git command do you need to type in to push the committed changes back to the remote repository. (git pull has already been performed, and the branch is up-to-date)";
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(prompt);
@@ -58,10 +53,10 @@ namespace GitIQT
         public void NextPrompt()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("That's correct! You've successfully cloned the repository.");
+            Console.WriteLine("That's correct! You've successfully pushed the branch back to the remote repository.");
 
-            Console.WriteLine("Next check what branch you are on and then swap to the dev branch.");
-            new CheckBranch().AskPrompt();
+            Console.WriteLine("Congratulations! You have successfully completed all your git tasks.");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }
