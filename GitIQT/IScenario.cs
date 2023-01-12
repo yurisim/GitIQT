@@ -9,7 +9,7 @@ namespace GitIQT
     public interface IScenario
     {
         // Methods
-        void AskPrompt();
+        string AskPrompt();
         void GetResponses();
         bool CheckReponse();
         void NextPrompt();
