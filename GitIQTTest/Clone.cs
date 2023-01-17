@@ -6,7 +6,7 @@ namespace GitIQTTest
 {
     public class Tests
     {
-        Clone CloneInstance;
+        Clone CloneInstance = new Clone();
 
         [SetUp]
         public void Setup()
