@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.Design;
 
 namespace GitIQT
 {
@@ -22,8 +18,6 @@ namespace GitIQT
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(prompt);
-
-            GetResponses();
         }
 
         public void GetResponses()
@@ -56,7 +50,11 @@ namespace GitIQT
             Console.WriteLine("That's correct! You've successfully checked your current branch.");
 
             Console.WriteLine("Next swap to the dev branch.");
-            new CheckoutDev().AskPrompt();
+
+            var checkoutDev = new CheckoutDev();
+
+            checkoutDev.AskPrompt();
+            checkoutDev.GetResponses();
         }
     }
 }

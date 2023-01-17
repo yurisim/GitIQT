@@ -1,29 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GitIQT
+﻿namespace GitIQT
 {
-    internal class PushBranch : IScenario
+    internal class CommitChange : IScenario
     {
         private string Response = string.Empty;
 
         private string Answer = string.Empty;
 
-        // Ask user to push changes to remote
+        // Ask user to commit changes to their branch
         public void AskPrompt()
         {
-            // Ask user to push changes to remote
-            Answer = $"git push";
+            // Ask user to commit changes to their branch
+            Answer = $"git commit";
 
-            var prompt = $"What git command do you need to type in to push the committed changes back to the remote repository. (git pull has already been performed, and the branch is up-to-date)";
+            var prompt = $"What git command do you need to type in to commit changes to the branch? (git add has already been performed)";
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(prompt);
-
-            GetResponses();
         }
 
         public void GetResponses()
@@ -53,10 +45,13 @@ namespace GitIQT
         public void NextPrompt()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("That's correct! You've successfully pushed the branch back to the remote repository.");
+            Console.WriteLine("That's correct! You've successfully committed the changes to your branch.");
 
-            Console.WriteLine("Congratulations! You have successfully completed all your git tasks.");
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Next push the changes back to the remote repository.");
+            var pushBranch = new PushBranch();
+
+            pushBranch.AskPrompt();
+            pushBranch.GetResponses();
         }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GitIQT
+﻿namespace GitIQT
 {
     internal class ChangeCode : IScenario
     {
@@ -22,8 +16,6 @@ namespace GitIQT
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(prompt);
-
-            GetResponses();
         }
 
         public void GetResponses()
@@ -56,7 +48,10 @@ namespace GitIQT
             Console.WriteLine("That's correct! You've successfully checked changes made in your branches code.");
 
             Console.WriteLine("Next commit these changes to your branch.");
-            new CommitChange().AskPrompt();
+            var commitChange = new CommitChange();
+
+            commitChange.AskPrompt();
+            commitChange.GetResponses();
         }
     }
 }

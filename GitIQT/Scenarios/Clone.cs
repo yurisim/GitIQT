@@ -55,7 +55,13 @@
             Console.WriteLine("That's correct! You've successfully cloned the repository.");
 
             Console.WriteLine("Next check what branch you are on and then swap to the dev branch.");
-            new CheckBranch().AskPrompt();
+
+            var checkBranch = new CheckBranch();
+
+            // These are seperated from the previous version where it was a one line `new Clone().AskPrompt();` to this to better
+            // control how the tests run
+            checkBranch.AskPrompt();
+            checkBranch.GetResponses();
         }
     }
 }

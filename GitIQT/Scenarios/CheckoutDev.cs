@@ -1,29 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GitIQT
+﻿namespace GitIQT
 {
-    internal class CommitChange : IScenario
+    internal class CheckoutDev : IScenario
     {
         private string Response = string.Empty;
 
         private string Answer = string.Empty;
 
-        // Ask user to commit changes to their branch
+        // Ask user to ckeckout dev branch
         public void AskPrompt()
         {
-            // Ask user to commit changes to their branch
-            Answer = $"git commit";
+            // Ask user to ckeckout dev branch
+            Answer = $"git checkout dev";
 
-            var prompt = $"What git command do you need to type in to commit changes to the branch? (git add has already been performed)";
+            var prompt = $"What git command do you need to type in to checkout the repository named 'dev'?";
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(prompt);
-
-            GetResponses();
         }
 
         public void GetResponses()
@@ -53,10 +45,15 @@ namespace GitIQT
         public void NextPrompt()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("That's correct! You've successfully committed the changes to your branch.");
+            Console.WriteLine("That's correct! You've successfully checked out the dev branch of this repository.");
 
-            Console.WriteLine("Next push the changes back to the remote repository.");
-            new PushBranch().AskPrompt();
+            Console.WriteLine("Next create your own branch from the dev branch. Please name it: 'feature/feature-name'.");
+            var createBranch = new CreateBranch();
+
+            // These are seperated from the previous version where it was a one line `new Clone().AskPrompt();` to this to better
+            // control how the tests run
+            createBranch.AskPrompt();
+            createBranch.GetResponses();
         }
     }
 }
