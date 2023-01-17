@@ -1,10 +1,10 @@
-﻿namespace GitIQT
+﻿namespace GitIQT.Scenarios
 {
     public class Clone : IScenario
     {
         public string Response = string.Empty;
 
-        private string Answer = string.Empty;
+        private string[] Answer = new string[2];
 
         public string RepoURL = string.Empty;
 
@@ -17,24 +17,32 @@
 
             // Ask user to checkout the dev branch of the repository
             RepoURL = $"https://github.com/552ODST/{repoID}/ProjectBacon.git";
-            Answer = $"git clone {RepoURL}";
-            
-            var prompt = $"What git command do you need to type in to clone the repository located at '{RepoURL}'? You can copy and paste!";
+            Answer[0] = $"git clone {RepoURL}";
+            Answer[1] = $"git clone {RepoURL} -b branch-name --single-branch";
+
+
+            var prompt = new[] {
+                "First, you need to clone the repository located at:",
+                $"{RepoURL}?",
+                "You can copy and paste!",
+                "",
+                "Alternatively, you could clone from a specific branch",
+                "One branch that exists in this repository is named",
+                "thisBranch-name"
+            };
 
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(prompt);
+            foreach (string s in prompt)
+                Console.WriteLine(s);
         }
 
         public void GetResponses()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-
+            
             Response = Console.ReadLine()?.Trim() ?? "";
-
             if (CheckReponse())
-            {
                 NextPrompt();
-            }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -46,22 +54,28 @@
         // Check if Prompt() was successful
         public bool CheckReponse()
         {
-            return Response == Answer;
+            foreach (string s in Answer)
+                if (Response == s)
+                    return true;
+            return false;
         }
 
         public void NextPrompt()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("That's correct! You've successfully cloned the repository.");
+            if (Response == Answer[0])
+            {
+                Console.WriteLine("That's correct! You've successfully cloned the repository from the main branch.");
+            }
+            if (Response == Answer[1])
+            {
+                Console.WriteLine("That's correct! You've successfully cloned the repository from thisBranch-name branch");             
+            }
 
-            Console.WriteLine("Next check what branch you are on and then swap to the dev branch.");
+            var changeDirectory = new ChangeDirectory();
 
-            var checkBranch = new CheckBranch();
-
-            // These are seperated from the previous version where it was a one line `new Clone().AskPrompt();` to this to better
-            // control how the tests run
-            checkBranch.AskPrompt();
-            checkBranch.GetResponses();
+            changeDirectory.AskPrompt();
+            changeDirectory.GetResponses();
         }
     }
 }

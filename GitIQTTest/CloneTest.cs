@@ -1,5 +1,5 @@
 using FluentAssertions;
-using GitIQT;
+using GitIQT.Scenarios;
 
 namespace GitIQTTest
 {
@@ -31,6 +31,21 @@ namespace GitIQTTest
             var actual = CloneInstance.CheckReponse();
             var expected = true;
             var prompt = "git clone is the correct command to use when just cloning a repository";
+
+            actual.Should().Be(expected, because: prompt);
+            // actual.Should().BeTrue( because: prompt); // THis works too but I wanted to be explicit as to how the actual/expect variables should be.
+        }
+
+        [Test]
+        public void CorrectBranchClone()
+        {
+            // IMPORTANT!!!
+
+            CloneInstance.Response = $"git clone -b x-branch";
+
+            var actual = CloneInstance.CheckReponse();
+            var expected = true;
+            var prompt = "git clone -b <branch-name> is the correct command to use when cloning a specific branch";
 
             actual.Should().Be(expected, because: prompt);
             // actual.Should().BeTrue( because: prompt); // THis works too but I wanted to be explicit as to how the actual/expect variables should be.

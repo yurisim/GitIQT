@@ -1,4 +1,4 @@
-﻿namespace GitIQT
+﻿namespace GitIQT.Scenarios
 {
     internal class GitIQT
     {
@@ -11,6 +11,7 @@
                 "======================================================================================================================",
                 "It's your first day at your new job and there's a lot of stuff to do. Your boss gives you a list of tasks to complete:",
                 "1. Clone a repository",
+                "    ( Clone from main branch or a specific branch ) ",
                 "2. Check out what branch you are on",
                 "3. Checkout the dev branch of the repository",
                 "4. Create a new branch called 'feature/feature-name' from the dev branch",
