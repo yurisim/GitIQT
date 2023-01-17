@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GitIQT
+﻿namespace GitIQT
 {
-    internal class CloneRepo : IScenario
+    public class Clone : IScenario
     {
-        private string Response = string.Empty;
+        public string Response = string.Empty;
 
         private string Answer = string.Empty;
+
+        public string RepoURL = string.Empty;
 
         // Ask user to clone a repository
         public void AskPrompt()
@@ -20,15 +16,13 @@ namespace GitIQT
             var repoID = Guid.NewGuid().ToString().Substring(0, 5);
 
             // Ask user to checkout the dev branch of the repository
-            var repoURL = $"https://github.com/552ODST/{repoID}/ProjectBacon.git";
-            Answer = $"git clone {repoURL}";
-
-            var prompt = $"What git command do you need to type in to clone the repository located at '{repoURL}'? You can copy and paste!";
+            RepoURL = $"https://github.com/552ODST/{repoID}/ProjectBacon.git";
+            Answer = $"git clone {RepoURL}";
+            
+            var prompt = $"What git command do you need to type in to clone the repository located at '{RepoURL}'? You can copy and paste!";
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(prompt);
-
-            GetResponses();
         }
 
         public void GetResponses()

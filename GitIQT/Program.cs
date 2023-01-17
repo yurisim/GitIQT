@@ -30,7 +30,12 @@
             foreach (var prompt in prompts) Console.WriteLine(prompt);
 
 
-            new CloneRepo().AskPrompt();
+            var clone = new Clone();
+
+            // These are seperated from the previous version where it was a one line `new Clone().AskPrompt();` to this to better
+            // control how the tests run
+            clone.AskPrompt();
+            clone.GetResponses();
         }
     }
 }
