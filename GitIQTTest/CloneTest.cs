@@ -45,7 +45,7 @@ namespace GitIQTTest
 
             var actual = CloneInstance.CheckReponse();
             var expected = true;
-            var prompt = "git clone <URL> -b <branch-name> --single-branch is the correct command to use when cloning a specific branch";
+            var prompt = "git clone <URL> -b <BRANCH_NAME> --single-branch is the correct command to use when cloning a specific branch";
 
             actual.Should().Be(expected, because: prompt);
             // actual.Should().BeTrue( because: prompt); // THis works too but I wanted to be explicit as to how the actual/expect variables should be.
