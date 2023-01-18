@@ -5,13 +5,13 @@ namespace GitIQTTest
 {
     public class Tests
     {
-        Clone CloneInstance = new Clone();
+        ConfigGlobals CloneInstance = new ConfigGlobals();
 
         [SetUp]
         public void Setup()
         {
             // Use this to set up your tests. It will run for each one
-            CloneInstance = new Clone();
+            CloneInstance = new ConfigGlobals();
 
             // Set the Answer property to the correct answer
             CloneInstance.AskPrompt(); // This is required so that the answer property is properly filled.
