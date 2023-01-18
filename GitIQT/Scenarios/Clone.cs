@@ -18,7 +18,7 @@
             // Ask user to checkout the dev branch of the repository
             RepoURL = $"https://github.com/552ODST/{repoID}/ProjectBacon.git";
             Answer[0] = $"git clone {RepoURL}";
-            Answer[1] = $"git clone {RepoURL} -b branch-name --single-branch";
+            Answer[1] = $"git clone {RepoURL} -b thisBranch-name --single-branch";
 
 
             var prompt = new[] {

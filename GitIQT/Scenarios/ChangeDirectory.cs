@@ -47,7 +47,7 @@
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("That's correct! You are now in the ProjectBacon repository.");
 
-            Console.WriteLine("Next push the changes back to the remote repository.");
+            Console.WriteLine("Next access the dev branch.");
 
             var checkBranch = new CheckBranch();
 
