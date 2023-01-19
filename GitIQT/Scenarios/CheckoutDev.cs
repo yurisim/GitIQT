@@ -1,25 +1,18 @@
 ﻿namespace GitIQT
 {
-    public class Clone : IScenario
+    internal class CheckoutDev : IScenario
     {
-        public string Response = string.Empty;
+        private string Response = string.Empty;
 
         private string Answer = string.Empty;
 
-        public string RepoURL = string.Empty;
-
-        // Ask user to clone a repository
+        // Ask user to ckeckout dev branch
         public void AskPrompt()
         {
-            // Ask user to clone a repository
-            // Get the first 5 characters of a GUID
-            var repoID = Guid.NewGuid().ToString().Substring(0, 5);
+            // Ask user to ckeckout dev branch
+            Answer = $"git checkout dev";
 
-            // Ask user to checkout the dev branch of the repository
-            RepoURL = $"https://github.com/552ODST/{repoID}/ProjectBacon.git";
-            Answer = $"git clone {RepoURL}";
-            
-            var prompt = $"What git command do you need to type in to clone the repository located at '{RepoURL}'? You can copy and paste!";
+            var prompt = $"What git command do you need to type in to checkout the repository named 'dev'?";
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(prompt);
@@ -52,16 +45,15 @@
         public void NextPrompt()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("That's correct! You've successfully cloned the repository.");
+            Console.WriteLine("That's correct! You've successfully checked out the dev branch of this repository.");
 
-            Console.WriteLine("Next check what branch you are on and then swap to the dev branch.");
-
-            var checkBranch = new CheckBranch();
+            Console.WriteLine("Next create your own branch from the dev branch. Please name it: 'feature/feature-name'.");
+            var createBranch = new CreateBranch();
 
             // These are seperated from the previous version where it was a one line `new Clone().AskPrompt();` to this to better
             // control how the tests run
-            checkBranch.AskPrompt();
-            checkBranch.GetResponses();
+            createBranch.AskPrompt();
+            createBranch.GetResponses();
         }
     }
 }
