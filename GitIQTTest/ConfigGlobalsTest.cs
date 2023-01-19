@@ -29,7 +29,7 @@ namespace GitIQTTest
         }
 
         [Test]
-        public void CorrectClone()
+        public void CorrectEmail()
         {
             EmailInstance.Response = "git config --global user.email";
 
@@ -50,7 +50,7 @@ namespace GitIQTTest
         }
 
         [Test]
-        public void IncorrectClone()
+        public void IncorrectEmail()
         {
             EmailInstance.Response = "git --global config email";
 
