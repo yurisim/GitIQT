@@ -30,12 +30,10 @@
             foreach (var prompt in prompts) Console.WriteLine(prompt);
 
 
-            var clone = new Clone();
+            var configGlobals = new ConfigGlobalsName();
 
-            // These are seperated from the previous version where it was a one line `new Clone().AskPrompt();` to this to better
-            // control how the tests run
-            clone.AskPrompt();
-            clone.GetResponses();
+            configGlobals.AskPrompt();
+            configGlobals.GetResponses();
         }
     }
 }

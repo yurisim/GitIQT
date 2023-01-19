@@ -3,7 +3,7 @@ using GitIQT;
 
 namespace GitIQTTest
 {
-    public class Tests
+    public class CloneTests
     {
         Clone CloneInstance = new Clone();
 
