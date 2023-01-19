@@ -12,7 +12,7 @@
             // Ask user to check the status of their branch
             Answer = $"git status";
 
-            var prompt = $"You've made some changes to your code. What git command do you need to see the changes you have made in your current branch?";
+            var prompt = $"What git command do you need to see the changes you have made in your current branch?";
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(prompt);
