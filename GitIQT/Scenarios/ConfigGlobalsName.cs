@@ -1,8 +1,8 @@
 ﻿namespace GitIQT
 {
-    internal class ConfigGlobals : IScenario
+    public class ConfigGlobalsName : IScenario
     {
-        private string Response = string.Empty;
+        public string Response = string.Empty;
 
         private string Answer = string.Empty;
 
@@ -10,11 +10,12 @@
         public void AskPrompt()
         {
             // Ask user to change global configs
-            Answer = "git config --global user.name \"FIRST_NAME LAST_NAME\"";
-
+            Answer = "git config --global user.name";
+            
             var prompt = new[] {
                 "Looks like someone else's credentials are on your git machine.",
-                "How do you set the global configs to use your name and email instead?" 
+                "How do you set the global configs to use your name instead?",
+                "(Do not input an actual name after the git command.)"
             };
             Console.ForegroundColor = ConsoleColor.White;
             foreach (string s in prompt)
@@ -48,13 +49,13 @@
         public void NextPrompt()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("That's correct! You've successfully changed the global configs to use your credentials.");
+            Console.WriteLine("Correct, you have changed the global configs to use your name.");
 
-            Console.WriteLine("Next let's clone a repository onto your local machine, so you can work on a project simultaneously with other users, without affecting their work.");
-            var clone = new Clone();
+            Console.WriteLine("Now, change the configs to use your email.");
+            var configGlobals = new ConfigGlobalsEmail();
 
-            clone.AskPrompt();
-            clone.GetResponses();
+            configGlobals.AskPrompt();
+            configGlobals.GetResponses();
         }
     }
 }

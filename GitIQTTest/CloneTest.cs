@@ -3,15 +3,15 @@ using GitIQT;
 
 namespace GitIQTTest
 {
-    public class Tests
+    public class CloneTests
     {
-        ConfigGlobals CloneInstance = new ConfigGlobals();
+        Clone CloneInstance = new Clone();
 
         [SetUp]
         public void Setup()
         {
             // Use this to set up your tests. It will run for each one
-            CloneInstance = new ConfigGlobals();
+            CloneInstance = new Clone();
 
             // Set the Answer property to the correct answer
             CloneInstance.AskPrompt(); // This is required so that the answer property is properly filled.
