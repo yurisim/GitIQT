@@ -14,19 +14,27 @@
 
             var prompt = "However, while the repository has been cloned, you are not currently in it. What do you need to do next to access the local repository?";
 
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(prompt);
         }
 
         public void GetResponses()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.White;
 
             Response = Console.ReadLine()?.Trim() ?? "";
 
             if (CheckReponse())
             {
                 NextPrompt();
+            }
+            else if (Response == "again")
+            {
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("Hah, very funny.");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("However, that is still not the correct command.");
+                GetResponses();
             }
             else
             {
@@ -44,10 +52,9 @@
 
         public void NextPrompt()
         {
+            Console.WriteLine("C:\\Users\\Administrator\\Files\\ProjectBacon>");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("That's correct! You are now in the ProjectBacon repository.");
-
-            Console.WriteLine("Next access the dev branch.");
 
             var checkBranch = new CheckBranch();
 
