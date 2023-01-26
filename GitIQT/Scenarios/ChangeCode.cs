@@ -44,14 +44,26 @@
 
         public void NextPrompt()
         {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("On branch feature/feature-name");
+            Console.WriteLine("Changes not staged for commit");
+            Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("That's correct! You've successfully checked changes made in your branches code.");
+            Console.WriteLine("    Modified: AddThis.txt");
+            Console.WriteLine("    Modified: AddThisToo.txt");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("");
+            Console.WriteLine("no changes added to commit (use \"git add <filename>\" or \"git add --all\") ");
 
-            Console.WriteLine("Next commit these changes to your branch.");
-            var commitChange = new CommitChange();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("That's correct! You've successfully checked changes made in your branches files.");
 
-            commitChange.AskPrompt();
-            commitChange.GetResponses();
+            Console.WriteLine("Next add these changes to prepare a commit.");
+
+            var AddFile = new AddFile();
+
+            AddFile.AskPrompt();
+            AddFile.GetResponses();
         }
     }
 }

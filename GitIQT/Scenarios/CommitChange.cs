@@ -4,23 +4,24 @@
     {
         private string Response = string.Empty;
 
-        private string Answer = string.Empty;
+        private string[] Answer = new string[2];
 
         // Ask user to commit changes to their branch
         public void AskPrompt()
         {
             // Ask user to commit changes to their branch
-            Answer = $"git commit";
+            Answer[0] = $"git commit -m \"Text files changed\"";
+            Answer[1] = $"git commit";
 
-            var prompt = $"What git command do you need to type in to commit changes to the branch? (git add has already been performed)";
+            var prompt = $"What git command do you need to type in to commit changes to the branch? (Hint: Message must be \"Text files changed\")";
 
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(prompt);
         }
 
         public void GetResponses()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.White;
 
             Response = Console.ReadLine()?.Trim() ?? "";
 
@@ -39,7 +40,11 @@
         // Check if Prompt() was successful
         public bool CheckReponse()
         {
-            return Response == Answer;
+            bool isValidResponse = false;
+            foreach (string s in Answer)
+                if (Response == s)
+                    isValidResponse = true;
+            return isValidResponse;
         }
 
         public void NextPrompt()
