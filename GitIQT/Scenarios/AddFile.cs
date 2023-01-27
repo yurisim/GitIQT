@@ -70,7 +70,7 @@ namespace GitIQT
             else if (Response == Answer[2] || Response == Answer[3])
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("WRONG HAHAHA");
+                Console.WriteLine("Whoops! You added an extra file by mistake!");
                 Console.WriteLine("");
                 var addedByMistake = new AddedByMistake();
 

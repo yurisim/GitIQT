@@ -52,11 +52,11 @@
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("That's correct! You've successfully committed the changes to your branch.");
 
-            Console.WriteLine("Next push the changes back to the remote repository.");
-            var pushBranch = new PushBranch();
+            Console.WriteLine("Next compare your branch to master, to determine if a pull is required.");
+            var diffCompare = new DiffCompare();
 
-            pushBranch.AskPrompt();
-            pushBranch.GetResponses();
+            diffCompare.AskPrompt();
+            diffCompare.GetResponses();
         }
     }
 }

@@ -14,13 +14,13 @@
 
             var prompt = $"You've made some changes to your code. What git command do you need to see the changes you have made in your current branch?";
 
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(prompt);
         }
 
         public void GetResponses()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.White;
 
             Response = Console.ReadLine()?.Trim() ?? "";
 
