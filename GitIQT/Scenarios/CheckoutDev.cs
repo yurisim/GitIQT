@@ -10,7 +10,7 @@
         public void AskPrompt()
         {
             // Ask user to ckeckout dev branch
-            Answer = $"git checkout -b dev";
+            Answer = $"git checkout dev";
 
             var prompt = $"What git command do you need to type in to checkout the branch named 'dev'?";
 
