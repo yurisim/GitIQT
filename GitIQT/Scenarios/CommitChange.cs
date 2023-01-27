@@ -52,7 +52,7 @@
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("That's correct! You've successfully committed the changes to your branch.");
 
-            Console.WriteLine("Next compare your branch to master, to determine if a pull is required.");
+            Console.WriteLine("Next compare your branch to dev, to determine if a pull is required.");
             var diffCompare = new DiffCompare();
 
             diffCompare.AskPrompt();

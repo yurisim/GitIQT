@@ -10,9 +10,9 @@
         public void AskPrompt()
         {
             // Ask user to check their current branch
-            Answer = $"git diff master..feature/feature-name";
+            Answer = $"git diff dev..feature/feature-name";
 
-            var prompt = $"What git command compares the differences between master and your branch? (use feature/feature-name)";
+            var prompt = $"What git command compares the differences between dev and your branch? (use feature/feature-name)";
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(prompt);

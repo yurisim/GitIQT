@@ -10,9 +10,9 @@
         public void AskPrompt()
         {
             // Ask user to push changes to remote
-            Answer = $"git push";
+            Answer = $"git push origin dev";
 
-            var prompt = $"What git command do you need to type in to push the committed changes back to the remote repository. (git pull has already been performed, and the branch is up-to-date)";
+            var prompt = $"What git command do you need to type in to push the committed changes back to the dev branch?";
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(prompt);
@@ -45,7 +45,7 @@
         public void NextPrompt()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("That's correct! You've successfully pushed the branch back to the remote repository.");
+            Console.WriteLine("That's correct! You've successfully pushed the branch back to the dev branch.");
 
             Console.WriteLine("Congratulations! You have successfully completed all your git tasks.");
             Console.ForegroundColor = ConsoleColor.White;
