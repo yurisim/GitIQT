@@ -17,14 +17,14 @@
                 "You don't really want to commit, because you want to quickly undo it if you go with the way you are thinking of. What's a way to save your coworkers work?"
             };
 
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             foreach (string s in prompt)
                 Console.WriteLine(s);
         }
 
         public void GetResponses()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.White;
 
             Response = Console.ReadLine()?.Trim() ?? "";
 
@@ -51,11 +51,11 @@
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("That's correct! You've successfully stashed changes made by your coworker.");
 
-            Console.WriteLine("Looks like your idea was a success, now you should commit the changes so they do not get lost.");
-            var changeCode = new ChangeCode();
+            Console.WriteLine("Looks like your idea was not quite what was needed, what do you need to do to get your coworker's changes back?");
+            var restoreChanges = new RestoreStash();
 
-            changeCode.AskPrompt();
-            changeCode.GetResponses();
+            restoreChanges.AskPrompt();
+            restoreChanges.GetResponses();
         }
     }
 }
