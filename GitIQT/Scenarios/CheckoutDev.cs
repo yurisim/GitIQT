@@ -12,15 +12,15 @@
             // Ask user to ckeckout dev branch
             Answer = $"git checkout dev";
 
-            var prompt = $"What git command do you need to type in to checkout the repository named 'dev'?";
+            var prompt = $"What git command do you need to type in to checkout the branch named 'dev'?";
 
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(prompt);
         }
 
         public void GetResponses()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.White;
 
             Response = Console.ReadLine()?.Trim() ?? "";
 
@@ -47,7 +47,6 @@
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("That's correct! You've successfully checked out the dev branch of this repository.");
 
-            Console.WriteLine("Next create your own branch from the dev branch. Please name it: 'feature/feature-name'.");
             var createBranch = new CreateBranch();
 
             // These are seperated from the previous version where it was a one line `new Clone().AskPrompt();` to this to better
