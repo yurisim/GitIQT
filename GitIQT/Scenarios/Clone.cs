@@ -1,4 +1,4 @@
-﻿namespace GitIQT.Scenarios
+﻿namespace GitIQT
 {
     public class Clone : IScenario
     {
