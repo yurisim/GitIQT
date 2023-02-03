@@ -53,11 +53,11 @@
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("That's correct! You've successfully created a new branch and checked it out.");
 
-            Console.WriteLine("Next change some of the code in your branch.");
-            var changeCode = new ChangeCode();
+            Console.WriteLine("Next, lets stash your coworkers changes, and follow up by making their own branch so you can both work on the same project simultaneously.");
+            var stashChanges = new StashChanges();
 
-            changeCode.AskPrompt();
-            changeCode.GetResponses();
+            stashChanges.AskPrompt();
+            stashChanges.GetResponses();
         }
     }
 }
